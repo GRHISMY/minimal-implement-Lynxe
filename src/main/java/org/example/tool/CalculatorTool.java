@@ -1,16 +1,13 @@
 package org.example.tool;
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
+import net.objecthunter.exp4j.Expression;
+import net.objecthunter.exp4j.ExpressionBuilder;
 import java.util.Map;
 
 public class CalculatorTool implements Tool{
 
-    private final ScriptEngine engine;
-
     public CalculatorTool() {
-        ScriptEngineManager manager = new ScriptEngineManager();
-        this.engine = manager.getEngineByName("JavaScript");
+        // exp4j 不需要初始化
     }
 
     @Override
@@ -35,7 +32,9 @@ public class CalculatorTool implements Tool{
             return ToolResult.error("表达式不能为空");
         }
         try {
-            Object result = engine.eval(expression);
+            // 使用 exp4j 解析和计算表达式
+            Expression e = new ExpressionBuilder(expression).build();
+            double result = e.evaluate();
             return ToolResult.success("计算结果: " + expression + " = " + result);
         } catch (Exception e) {
             return ToolResult.error("计算失败: " + e.getMessage());

@@ -22,7 +22,7 @@ public class MinimalLynxeApp {
         // 从环境变量获取 API Key
         String apiKey = "sk-b6c0b3223440431c8adb6ec827227f65";
         // 创建 LLM 客户端
-        LLMClient llmClient = new DashScopeLLMClient(apiKey, "qwen-plus");
+        LLMClient llmClient = new DashScopeLLMClient(apiKey, "qwen-flash");
         // 准备工具
         List<Tool> tools = List.of(
                 new CalculatorTool(),
@@ -35,10 +35,10 @@ public class MinimalLynxeApp {
         System.out.println("=".repeat(60));
         runSimpleAgent(llmClient, tools);
 
-        System.out.println("\n" + "=".repeat(60));
-        System.out.println("示例 2：Func-Agent 计划模式");
-        System.out.println("=".repeat(60));
-        runPlanMode(llmClient, tools);
+//        System.out.println("\n" + "=".repeat(60));
+//        System.out.println("示例 2：Func-Agent 计划模式");
+//        System.out.println("=".repeat(60));
+//        runPlanMode(llmClient, tools);
     }
 
     /**

@@ -168,7 +168,7 @@ public class SimpleReActAgent {
             log.warn("解析 LLM 响应为 JSON 失败: {}", e.getMessage());
             result.reasoning = content;
         }
-        return null;
+        return result;
     }
 
     /**
